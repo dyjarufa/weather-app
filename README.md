@@ -28,45 +28,8 @@ $ pnpm install          # or npm install / yarn install
 $ pnpm dev              # opens http://localhost:5173
 # 4. Run tests
 $ pnpm test             # Vitest in watch mode
-# 5. Production build
-$ pnpm build            # outputs to dist/
-$ pnpm preview          # local static preview
-Prerequisites
-Node ≥ 18
-pnpm ≥ 9 (or npm/yarn)
-> No API keys are needed — both services are public.
-***🗂️ Project Structure
-src/
-├─ components/          # AddressForm, ForecastCard, …
-├─ hooks/               # useGeocode, useWeather
-├─ lib/                 # queryClient, helpers
-├─ mocks/               # MSW handlers + server
-├─ pages/               # Home.tsx (single‑page app)
-└─ App.tsx
-***🔌 Data Flow
-graph TD
-  A[AddressForm] -->|submit| B(useGeocode)
-  B -->|coords| C(useWeather)
-  C --> D[ForecastGrid]
-AddressForm captures user input.
-useGeocode requests /geocoder/locations/onelineaddress → { lat, lon }.
-useWeather requests:
-/points/{lat},{lon}
-the /forecast endpoint returned in the previous response.
-ForecastGrid renders weather cards.
-All external requests pass through the local proxy (/api/geocode and /api/weather).
-***🧪 Testing
-| Type        | Tooling               | Scope                        |
-| ----------- | --------------------- | ---------------------------- |
-| Unit / hook | Vitest + MSW  | useGeocode, useWeather   |
-| Component   | React Testing Library | Full UI flow (input → cards) |
-| E2E (opt.)  | Playwright            | End‑to‑end browser journey   |
-Generate coverage with pnpm coverage (LCOV report under coverage/).
-***📑 API References
-Census Geocoder – /geocoder/locations/onelineaddress → API PDF
-National Weather Service – /points, /forecast, /alerts → Web‑API docs
-***🛣️ Roadmap
--
+
+
 ***🤝 Contributing
 Pull requests are welcome! Please open an issue first to discuss major changes.
 Fork the project
