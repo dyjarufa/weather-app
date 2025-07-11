@@ -8,13 +8,13 @@ export default defineConfig({
       '/api/geocode': {
         target: 'https://geocoding.geo.census.gov/geocoder',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/geocode/, ''),
+        rewrite: (p) => p.replace(/^\/api\/geocode/, ''),
       },
       '/api/weather': {
         target: 'https://api.weather.gov',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/weather/, ''),
-        headers: { 'User-Agent': 'weather-app-demo (you@example.com)' },
+        rewrite: (p) => p.replace(/^\/api\/weather/, ''),
+        headers: { 'User-Agent': 'weather-demo (dev@example.com)' },
       },
     },
   },
